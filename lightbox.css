@@ -11,7 +11,7 @@
   width: 85%;
   margin: 0 auto;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 5%;
 }
 .lightbox .display .box {
   height: var(--display-height);
@@ -92,5 +92,13 @@
   }
   .lightbox .display{
     width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  .lightbox .display{
+    --display-height: 300px;
+  }
+  .lightbox .thumbnails {
+    height: 80px;
   }
 }
