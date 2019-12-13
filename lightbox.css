@@ -1,0 +1,68 @@
+.debug div { border: solid 1px blue; }
+
+.lightbox {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+.lightbox .display {
+  --display-height: 500px;
+  height: var(--display-height);
+  width: 75%;
+  margin: 0 auto;
+  position: relative;
+}
+.lightbox .display .box {
+  height: var(--display-height);
+  line-height: var(--display-height);
+  width: 100%;
+  margin: 0 auto;
+}
+.lightbox .display .button {
+  position: absolute;
+  top: 0;
+  width: 5%;
+  height: var(--display-height);
+  min-width: 30px;
+
+  /* setup arrows */
+  font: bold 40px sans-serif;
+  /* line-height need to be set after font */
+  line-height: var(--display-height);
+  text-align: center;
+  user-select: none;
+  color: black;
+
+  background-color: white;
+  opacity: 0.08;
+  border: none;
+}
+.lightbox .display .button.prev {
+  left: 0;
+}
+.lightbox .display .button.next {
+  right: 0;
+}
+.lightbox .display .button:hover {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.lightbox .thumbnails {
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.lightbox .thumbnails .card {
+  display: inline-block;
+  margin-left: 10px;
+  height: 100%;
+}
+.lightbox img {
+  max-height: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+}
