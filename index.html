@@ -14,7 +14,7 @@
         <div class="button next">&gt;</div>
       </div>
       <div class="thumbnails">
-        <div class="card"><img src="img/1.jpg" alt="1" class="selected"></div>
+        <div class="card selected"><img src="img/1.jpg" alt="1"></div>
         <div class="card"><img src="img/2.jpg" alt="2"></div>
         <div class="card"><img src="img/3.jpg" alt="3"></div>
         <div class="card"><img src="img/4.jpg" alt="4"></div>
@@ -24,4 +24,29 @@
       </div>
     </div>
   </body>
+  <script>
+function switchImage(d) {
+  // Find index of currently selected card.
+  let i = Math.max(0, $('.lightbox .thumbnails .card.selected').index());
+  // Clear selected class and get all the cards.
+  let cards = $('.lightbox .thumbnails .card').removeClass('selected');
+  // Loop to the next card.
+  switchTo($(cards[(i + cards.length + d) % cards.length]));
+}
+function switchTo(selected) {
+  let cards = $('.lightbox .thumbnails .card').removeClass('selected');
+  let img = selected.addClass('selected').find('img');
+  // Show selected in the main box, also updates "alt".
+  $('.lightbox .box>img').attr({src: img.attr('src'), alt: img.attr('alt')});
+  // Control the scrollbar to focus the selected card.
+  $('.lightbox .thumbnails').animate({
+      scrollLeft: selected.position().left - cards.first().position().left,
+  }, 800);
+}
+
+$('.lightbox .button.next').on('click', function () { switchImage(1); });
+$('.lightbox .box').on('click', function () { switchImage(1); });
+$('.lightbox .button.prev').on('click', function () { switchImage(-1); });
+$('.lightbox .thumbnails .card').on('click', function () { switchTo($(this)); });
+  </script>
 </html>
